@@ -1,5 +1,6 @@
-let Sequelize = require('sequelize');
-let sequelize = new Sequelize('mysql', 'root', 'ckinakbo32', {
+const Sequelize = require('sequelize');
+
+let sequelize = new Sequelize('todo_db', 'root', 'ckinakbo32', {
   host: 'localhost',
   dialect: 'mysql',
   
@@ -17,7 +18,3 @@ let models = [
 models.forEach(function(model) {
     module.exports[model] = sequelize.import(__dirname + '/' + model);
 });
-
-// let db = {};
-// db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
