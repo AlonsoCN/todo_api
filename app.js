@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 8080; // set port
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var todos = require('./routes/todos');
 
 var app = express();
 
@@ -28,7 +28,7 @@ app.listen(port);
 console.log('Magic happens on port ' + port);
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/todos', todos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
