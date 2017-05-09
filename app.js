@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 let express = require('express');
 let path = require('path');
@@ -11,6 +11,16 @@ let port = process.env.PORT || 8080; // set port
 
 let index = require('./routes/index');
 let todos = require('./routes/api/todos');
+
+// let Sequelize = require('sequelize');
+// let sequelize = new Sequelize('mysql', 'root', 'ckinakbo32', {
+//   host: 'localhost',
+//   dialect: 'mysql'
+// });
+
+// let db = {};
+// db.sequelize = sequelize;
+// db.Sequelize = Sequelize;
 
 let app = express();
 
