@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var port = process.env.PORT || 8080; // set port
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -21,6 +23,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.listen(port);
+console.log('Magic happens on port ' + port);
 
 app.use('/', index);
 app.use('/users', users);

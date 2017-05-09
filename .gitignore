@@ -24,6 +24,3 @@ coverage
 
 # Benchmarking
 benchmarks/graphs
-
-# bin
-bin
