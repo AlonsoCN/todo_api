@@ -1,16 +1,18 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+'use strict'
 
-var port = process.env.PORT || 8080; // set port
+let express = require('express');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var todos = require('./routes/todos');
+let port = process.env.PORT || 8080; // set port
 
-var app = express();
+let index = require('./routes/index');
+let todos = require('./routes/api/todos');
+
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,7 +27,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(port);
-console.log('Magic happens on port ' + port);
 
 app.use('/', index);
 app.use('/todos', todos);
@@ -47,5 +48,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+console.log('Magic happens on port ' + port);
 
 module.exports = app;
