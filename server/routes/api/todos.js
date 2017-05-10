@@ -5,7 +5,9 @@ const todosController = require('../../controllers').todos;
 
 router.route('/')
     .get(function (req, res) {
-        todosController.list();
+        console.log('1');
+        todosController.list;
+        console.log('2');
     })
     .post(function (req, res) {
         todosController.create();

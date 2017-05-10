@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node --use_strict ./bin/www",
-    "start:live": "nodemon ./bin/www"
+    "start:live": "nodemon --use_strict ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
