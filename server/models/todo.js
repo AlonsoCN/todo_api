@@ -1,5 +1,5 @@
-module.exports = function(sequelize, DataTypes) {
-    let Todo = sequelize.define('Todo', {
+module.exports = function (sequelize, DataTypes) {
+    const Todo = sequelize.define('Todo', {
         title: {
             type: DataTypes.STRING,
             field: 'title'

@@ -1,19 +1,18 @@
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-
-const port = process.env.PORT || 8080; // set port
-
-const index = require('./routes/index');
-const todos = require('./routes/api/todos');
+const express       = require('express');
+const path          = require('path');
+// const favicon     = require('serve-favicon');
+const logger        = require('morgan');
+const cookieParser  = require('cookie-parser');
+const bodyParser    = require('body-parser');
 
 const app = express();
 
+const port = process.env.PORT || 8080; // set port
+app.listen(port);
+
+//TODO: Delete view module
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'server/views'));
 app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
@@ -32,7 +31,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.listen(port);
+const index = require('./server/routes/index');
+const todos = require('./server/routes/api/todos');
 
 app.use('/', index);
 app.use('/todos', todos);
@@ -56,5 +56,4 @@ app.use(function (err, req, res, next) {
 });
 
 console.log(`Magic happens on port ${port}`);
-
 module.exports = app;

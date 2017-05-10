@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node --use_strict ./bin/www"
+    "start": "node --use_strict ./bin/www",
+    "start:live": "nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -15,5 +16,8 @@
     "pug": "~2.0.0-beta11",
     "sequelize": "^3.30.4",
     "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

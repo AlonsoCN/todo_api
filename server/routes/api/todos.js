@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const todo = require('../../models').Todo;
+const todosController = require('../../controllers').todos;
 
 router.route('/')
     .get(function (req, res) {
-        todo.findAll().then(rows => res.json(rows));
+        todosController.list();
     })
     .post(function (req, res) {
-        res.send('Add a book');
+        todosController.create();
     })
     .put(function (req, res) {
         res.send('Update the book');
