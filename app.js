@@ -1,18 +1,18 @@
 'use strict';
 
-let express = require('express');
-let path = require('path');
-let favicon = require('serve-favicon');
-let logger = require('morgan');
-let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-let port = process.env.PORT || 8080; // set port
+const port = process.env.PORT || 8080; // set port
 
-let index = require('./routes/index');
-let todos = require('./routes/api/todos');
+const index = require('./routes/index');
+const todos = require('./routes/api/todos');
 
-let app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,14 +40,14 @@ app.use('/', index);
 app.use('/todos', todos);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -58,5 +58,7 @@ app.use(function(err, req, res, next) {
 });
 
 console.log('Magic happens on port ' + port);
+
+// console.log(`Magic happens on port ${port}`);
 
 module.exports = app;

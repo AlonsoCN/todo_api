@@ -1,20 +1,22 @@
 const Sequelize = require('sequelize');
 
-let sequelize = new Sequelize('todo_db', 'root', 'ckinakbo32', {
-  host: 'localhost',
-  dialect: 'mysql',
-  
-  pool: {
-      max: 5,
-      min: 0,
-      idle: 10000
-  }
+const sequelize = new Sequelize('todo_db', 'root', 'ckinakbo32', {
+    host: 'localhost',
+    dialect: 'mysql',
+
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+    }
 });
 
-let models = [
-    'Todo',
-];
+const models = ['Todo'];
 
-models.forEach(function(model) {
+models.forEach(function (model) {
     module.exports[model] = sequelize.import(__dirname + '/' + model);
 });
+
+// const modelsExports = {};
+// models.forEach(model => modelsExports[model] = sequelize.import(__dirname + '/' + model));
+// export default modelsExports;

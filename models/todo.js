@@ -11,9 +11,10 @@ module.exports = function(sequelize, DataTypes) {
         }
     }, {
         tableName: 'todo',
-        timestamp: false,
-        createdAt: false,
-        updatedAt: false
+        // timestamp: false,
+        timestamps: false,
+        // createdAt: false,
+        // updatedAt: false
     });
     return Todo;
 };
