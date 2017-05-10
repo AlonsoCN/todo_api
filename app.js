@@ -12,16 +12,6 @@ let port = process.env.PORT || 8080; // set port
 let index = require('./routes/index');
 let todos = require('./routes/api/todos');
 
-// let Sequelize = require('sequelize');
-// let sequelize = new Sequelize('mysql', 'root', 'ckinakbo32', {
-//   host: 'localhost',
-//   dialect: 'mysql'
-// });
-
-// let db = {};
-// db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
-
 let app = express();
 
 // view engine setup
@@ -35,6 +25,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
 
 app.listen(port);
 
