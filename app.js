@@ -1,5 +1,3 @@
-'use strict';
-
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -57,8 +55,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-console.log('Magic happens on port ' + port);
-
-// console.log(`Magic happens on port ${port}`);
+console.log(`Magic happens on port ${port}`);
 
 module.exports = app;

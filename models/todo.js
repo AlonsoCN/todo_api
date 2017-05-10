@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function(sequelize, DataTypes) {
     let Todo = sequelize.define('Todo', {
         title: {
@@ -11,10 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         }
     }, {
         tableName: 'todo',
-        // timestamp: false,
-        timestamps: false,
-        // createdAt: false,
-        // updatedAt: false
+        timestamps: false
     });
     return Todo;
 };
