@@ -10,11 +10,9 @@ const app = express();
 const port = process.env.PORT || 8080; // set port
 app.listen(port);
 
-//TODO: Delete view module
 // view engine setup
-
-// app.set('views', path.join(__dirname, 'server/views'));
-// app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'server/views'));
+app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -24,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// CORS
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -32,13 +31,16 @@ app.use(function (req, res, next) {
   next();
 });
 
-//require('./server/routes')(app);
+const routes = require('./server/routes');
+routes(app);
 
-const index = require('./server/routes');
-//const todos = require('./server/routes/api/todos');
+// require('./server/routes')(app);
 
-app.use('/', index);
-//app.use('/todos', todos);
+// const index = require('./server/routes');
+// const todos = require('./server/routes/api/todos');
+
+// app.use('/', index);
+// app.use('/todos', todos);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -53,11 +55,11 @@ app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  
-  // res.status(err.status || 500);
-  // res.render('error');
+  // render the error page  
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 console.log(`Magic happens on port ${port}`);
+
 module.exports = app;

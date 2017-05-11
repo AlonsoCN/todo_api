@@ -1,5 +1,6 @@
-module.exports = function (sequelize, DataTypes) {
-    let Todo = sequelize.define('Todo', {
+module.exports = (sequelize, DataTypes) => {
+    console.log('model/Todo');
+    const Todo = sequelize.define('Todo', {
         title: {
             type: DataTypes.STRING,
             field: 'title'
@@ -9,5 +10,6 @@ module.exports = function (sequelize, DataTypes) {
         tableName: 'todo',
         timestamps: false
     });
+
     return Todo;
 };

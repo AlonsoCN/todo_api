@@ -1,5 +1,5 @@
-const todosController = require('../../controllers').todos;
+// const todosController = require('../../controllers').todos;
 
-module.exports = (app) => {
-    app.get('/api', todosController.list);
-}
+// module.exports = (app) => {
+//     app.get('/api', todosController.list);
+// }
