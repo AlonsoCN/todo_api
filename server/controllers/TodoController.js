@@ -25,17 +25,18 @@ exports.update = (request, response) => {
             id: data.id
         }
     }
-    let code = 400;
     return Todo
         .update(data, condition)
         .then(serverResponse => {
-            let message = 'Not updated';
+            let code = 400;
+            let jsonResponse = { status: false };
             if (serverResponse[0] === 1) {
-                message = 'Updated';
+                jsonResponse.status = true;
                 code = 200;
             }
-            response.status(code).send(message);
-        });
+            response.status(code).send(jsonResponse);
+        })
+        .catch(error => response.status(400).send(error));
 }
 
 exports.delete = (request, response) => {
@@ -45,14 +46,16 @@ exports.delete = (request, response) => {
             id: data.id
         }
     }
-    let code = 400;
     return Todo
         .destroy(condition)
         .then(serverResponse => {
-            let message = 'Not deleted';
-            if (serverResponse === 1)
-                message = 'Deleted';
-            response.status(200).send(message);
+            let code = 400;
+            let jsonResponse = { status: false };
+            if (serverResponse === 1) {
+                jsonResponse.status = true;
+                code = 200;
+            }
+            response.status(code).send(jsonResponse);
         })
         .catch(error => response.status(400).send(error));
 }
