@@ -28,19 +28,7 @@ fs
         console.log(model.name);
     });
 
-/*
-Object.keys(db).forEach(modelName => {
-    console.log(db[modelName].associate);
-    if (db[modelName].associate) {
-        db[modelName].associate(db);
-    }
-});
-*/
-
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+// db.sequelize = sequelize;
+// db.Sequelize = Sequelize;
 
 module.exports = db;
-
-// const models = ['Todo'];
-// models.forEach( model => module.exports[model] = sequelize.import(__dirname + '/' + model));

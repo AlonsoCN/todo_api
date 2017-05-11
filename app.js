@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// CORS
+// CORS Setup
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -31,16 +31,9 @@ app.use(function (req, res, next) {
   next();
 });
 
+// Routes
 const routes = require('./server/routes');
 routes(app);
-
-// require('./server/routes')(app);
-
-// const index = require('./server/routes');
-// const todos = require('./server/routes/api/todos');
-
-// app.use('/', index);
-// app.use('/todos', todos);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
