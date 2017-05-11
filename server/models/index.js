@@ -22,10 +22,11 @@ fs
         (file !== basename) &&
         (file.slice(-3) === '.js'))
     .forEach(file => {
-        console.log('Loading next models: ');
-        const model = sequelize.import(path.join(__dirname, file));        
+        console.log('Loading models');
+        console.log('==============');
+        const model = sequelize.import(path.join(__dirname, file));
         db[model.name]  = model;
-        console.log(model.name);
+        console.log(`'${model.name}' model loaded`);
     });
 
 // db.sequelize = sequelize;
