@@ -7,7 +7,7 @@ const entityRoute = '/todos'
 router
     .get(entityRoute, todoController.list)
     .post(entityRoute, todoController.create)
-    .put(entityRoute, todoController.update)
+    .put(entityRoute + '/:idTodo', todoController.update)
     .delete(entityRoute + '/:idTodo', todoController.delete);
 
 module.exports = router;

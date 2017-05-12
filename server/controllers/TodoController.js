@@ -19,14 +19,11 @@ exports.create = (request, response) => {
 };
 
 exports.update = (request, response) => {
-    const data = request.body;
     const condition = {
-        where: {
-            id: data.id
-        }
+        where: { id: request.params.idTodo }
     }
     return Todo
-        .update(data, condition)
+        .update(request.body, condition)
         .then(serverResponse => {
             let code = 400;
             let jsonResponse = { status: false };
@@ -40,11 +37,8 @@ exports.update = (request, response) => {
 }
 
 exports.delete = (request, response) => {
-    const data = request.body;
     const condition = {
-        where: {
-            id: request.params.idTodo
-        }
+        where: { id: request.params.idTodo }
     }
     return Todo
         .destroy(condition)
