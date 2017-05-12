@@ -8,6 +8,6 @@ router
     .get(entityRoute, todoController.list)
     .post(entityRoute, todoController.create)
     .put(entityRoute, todoController.update)
-    .delete(entityRoute, todoController.delete);
+    .delete(entityRoute + '/:idTodo', todoController.delete);
 
 module.exports = router;

@@ -43,7 +43,7 @@ exports.delete = (request, response) => {
     const data = request.body;
     const condition = {
         where: {
-            id: data.id
+            id: request.params.idTodo
         }
     }
     return Todo
